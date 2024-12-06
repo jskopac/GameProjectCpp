@@ -1,4 +1,5 @@
 #include "GameEngine.h"
+#include "Sprite.h"
 #include "Init.h"
 
 namespace game
