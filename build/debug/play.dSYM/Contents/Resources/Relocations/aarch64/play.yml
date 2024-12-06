@@ -1,0 +1,16 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     'build/debug/play'
+relocations:
+  - { offset: 0x5434, size: 0x8, addend: 0x0, symName: __ZStL8__ioinit, symObjAddr: 0x183B0, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x55E7, size: 0x8, addend: 0x0, symName: __ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag, symObjAddr: 0x2B0, symBinAddr: 0x1000039EC, symSize: 0x100 }
+  - { offset: 0x56E3, size: 0x8, addend: 0x0, symName: __ZZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tagEN6_GuardC1EPS4_, symObjAddr: 0x258, symBinAddr: 0x100003994, symSize: 0x24 }
+  - { offset: 0x5713, size: 0x8, addend: 0x0, symName: __ZZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tagEN6_GuardD1Ev, symObjAddr: 0x27C, symBinAddr: 0x1000039B8, symSize: 0x34 }
+  - { offset: 0x5802, size: 0x8, addend: 0x0, symName: __ZNSt15__new_allocatorIcED2Ev, symObjAddr: 0x244, symBinAddr: 0x100003980, symSize: 0x14 }
+  - { offset: 0x585F, size: 0x8, addend: 0x0, symName: __ZN9__gnu_cxx11char_traitsIcE2eqERKcS3_, symObjAddr: 0x214, symBinAddr: 0x100003950, symSize: 0x30 }
+  - { offset: 0x58DA, size: 0x8, addend: 0x0, symName: __ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_, symObjAddr: 0x178, symBinAddr: 0x1000038B4, symSize: 0x9C }
+  - { offset: 0x598C, size: 0x8, addend: 0x0, symName: __ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_Alloc_hiderD1Ev, symObjAddr: 0x14C, symBinAddr: 0x100003888, symSize: 0x2C }
+  - { offset: 0x59CD, size: 0x8, addend: 0x0, symName: __ZN9__gnu_cxx11char_traitsIcE6lengthEPKc, symObjAddr: 0xF4, symBinAddr: 0x100003830, symSize: 0x58 }
+  - { offset: 0x5A0A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x3C, symBinAddr: 0x100003778, symSize: 0xB8 }
+  - { offset: 0x5ACA, size: 0x8, addend: 0x0, symName: __ZNSt11char_traitsIcE6lengthEPKc, symObjAddr: 0x0, symBinAddr: 0x10000373C, symSize: 0x3C }
+...
