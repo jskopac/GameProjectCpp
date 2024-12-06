@@ -25,7 +25,8 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 # Mac INTEL INCLUDE_PATHS!
 #INCLUDE_PATHS = -Iinclude -I/usr/local/include
 # Mac ARM INCLUDE_PATHS!
-INCLUDE_PATHS = -Iinclude -I/opt/homebrew/include
+#INCLUDE_PATHS = -Iinclude -I/opt/homebrew/include
+INCLUDE_PATHS = -Iinclude -I/opt/homebrew/include/SDL2
 # Windows INCLUDE_PATHS!
 #INCLUDE_PATHS = -Iinclude -IC:/msys64/ucrt64/include
 
