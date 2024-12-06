@@ -22,7 +22,4 @@ namespace game {
 extern Init sys;
 
 }
-
-
-
 #endif
