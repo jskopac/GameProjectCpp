@@ -1,3 +1,6 @@
+#ifndef PACMAN_H
+#define PACMAN_H
+
 #include "Sprite.h"
 #include <vector>
 #include <string>
@@ -29,3 +32,5 @@ namespace game{
     };
 
 }
+
+#endif
