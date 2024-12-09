@@ -2,6 +2,7 @@
 #include "Sprite.h"
 #include "Init.h"
 #include "Pacman.h"
+#include <iostream>
 #define FPS 60 
 
 namespace game
@@ -10,6 +11,7 @@ namespace game
     void GameEngine ::add(Sprite *s)
     {
         sprites.push_back(s);
+        std::cout << "Something was added!" << std::endl;
     }
 
     void GameEngine ::run()
@@ -42,16 +44,17 @@ namespace game
                     }
 */
                 }
+            }
 
-                SDL_RenderClear(sys.get_ren());
+            SDL_RenderClear(sys.get_ren());
+            for (Sprite* s : sprites)
+			    s->draw();
+            SDL_RenderPresent(sys.get_ren()); 
 
-                SDL_RenderPresent(sys.get_ren()); 
 
-
-                delay = nextTick - SDL_GetTicks();
-                if (delay > 0){
-                    SDL_Delay(delay);
-                }
+            delay = nextTick - SDL_GetTicks();
+            if (delay > 0){
+                SDL_Delay(delay);
             }
         }
     }
