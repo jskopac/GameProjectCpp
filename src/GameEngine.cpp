@@ -1,6 +1,7 @@
 #include "GameEngine.h"
 #include "Sprite.h"
 #include "Init.h"
+#include "Pacman.h"
 #define FPS 60 
 
 namespace game
@@ -28,7 +29,7 @@ namespace game
                 case SDL_QUIT:
                     quit = true;
                     break;
-
+/*
                 case SDL_KEYDOWN:
                     for (Sprite* s : sprites){
                         //metod som kallar action och skickar med event
@@ -39,8 +40,14 @@ namespace game
                     for (Sprite* s : sprites){
                         //metod som kallar action och skickar med event
                     }
-                    
+*/
                 }
+
+                SDL_RenderClear(sys.get_ren());
+
+                SDL_RenderPresent(sys.get_ren()); 
+
+
                 delay = nextTick - SDL_GetTicks();
                 if (delay > 0){
                     SDL_Delay(delay);
