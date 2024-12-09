@@ -13,6 +13,7 @@ namespace game{
             const SDL_Rect& getRect();
 
 
+
         protected:
             Sprite(int x, int y, int w, int h);
 
