@@ -16,12 +16,12 @@ namespace game{
             void add(Sprite* s);
             void remove(Sprite* s);
             void run();
-            ~GameEngine();
-
 
         private:
         vector<Sprite*> sprites;
 
     };
+
+    
 }
 #endif
