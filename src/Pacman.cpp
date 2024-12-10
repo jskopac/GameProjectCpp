@@ -25,7 +25,6 @@ namespace game{
         SDL_Surface* surf = IMG_Load(imagePath.c_str());
         texture = SDL_CreateTextureFromSurface(sys.get_ren(), surf);
         SDL_FreeSurface(surf);
-
         SDL_RenderCopy(sys.get_ren(), texture, NULL, &getRect()); 
     }
 
