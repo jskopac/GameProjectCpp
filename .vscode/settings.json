@@ -68,6 +68,8 @@
         "numeric": "cpp",
         "text_encoding": "cpp",
         "thread": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "iostream": "cpp",
+        "stop_token": "cpp"
     }
 }

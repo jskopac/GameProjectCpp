@@ -12,9 +12,11 @@ namespace game{
     class Pacman : public Sprite{
     public:
         static Pacman* getInstance(int x, int y, int w, int h);
-        void keyDown(const SDL_Event&);
-        void keyUp(const SDL_Event&);
-        void draw() const;
+        //void keyDown(const SDL_Event&);
+       // void keyUp(const SDL_Event&);
+
+        virtual void moveRight();
+        void draw();
         Pacman(int x, int y, int w, int h);
 
     private:

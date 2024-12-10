@@ -34,18 +34,19 @@ namespace game
                 case SDL_QUIT:
                     quit = true;
                     break;
-/*
+
                 case SDL_KEYDOWN:
                     for (const std::shared_ptr<Sprite>& s : sprites){
-                        //metod som kallar action och skickar med event
+                        if (event.key.keysym.sym == SDLK_RIGHT) {
+                            s -> moveRight();
+                        }
                     }
                     break;
 
-                case SDL_KEYUP:
+               /*  case SDL_KEYUP:
                     for (const shared_ptr<Sprite>& s : sprites){
                         //metod som kallar action och skickar med event
-                    }
-*/
+                    } */
                 }
             }
 

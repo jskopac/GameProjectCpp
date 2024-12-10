@@ -19,9 +19,10 @@ namespace game{
 
             // we should have general movements for sprites in general. Not pacman specifics. 
             
-
-            virtual void draw() const = 0;
-            const SDL_Rect& getRect() const;
+            
+            virtual void moveRight(){};
+            virtual void draw() = 0;
+            SDL_Rect& getRect();
 
             //creates a shared_ptr that the subclasses can use.
             template <typename T, typename...Args>
