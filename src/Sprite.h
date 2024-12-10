@@ -1,6 +1,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 #include <SDL.h>
+#include <memory>
 
 namespace game{
 
@@ -10,8 +11,16 @@ namespace game{
             virtual void keyDown(const SDL_Event&){};
             virtual void keyUp(const SDL_Event&){};
             virtual void draw() const = 0;
-            SDL_Rect& getRect() const {return rect;}
+            const SDL_Rect& getRect() const;
 
+            //creates a shared_ptr that the subclasses can use.
+            template <typename T, typename...Args>
+            static std::shared_ptr<T>create(Args&& ... args){
+                //checks condition at runtime to ensure that the type T must inherit from Sprite. 
+                static_assert(std::is_base_of<Sprite, T> :: value, "T must be a subclass of Sprite");
+                // returns a created subclass object of Sprite that is stored on the heap. the shared_ptr is in charge of managing it. 
+                return std::make_shared<T>(std::forward<Args>(args)...);
+            }
 
 
         protected:
