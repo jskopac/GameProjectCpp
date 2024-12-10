@@ -8,8 +8,18 @@ namespace game{
     class Sprite{
 
         public:
-            virtual void keyDown(const SDL_Event&){};
-            virtual void keyUp(const SDL_Event&){};
+
+            //maybe we should have these in the game engine, and instead have functions here that is more explanatory like move forward
+            // backward etc.
+            //virtual void keyDown(const SDL_Event&){};
+            //virtual void keyUp(const SDL_Event&){};
+            //mouse down 
+            //mouse up
+
+
+            // we should have general movements for sprites in general. Not pacman specifics. 
+            
+
             virtual void draw() const = 0;
             const SDL_Rect& getRect() const;
 

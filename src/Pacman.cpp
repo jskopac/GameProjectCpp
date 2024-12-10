@@ -12,12 +12,12 @@ namespace game{
         return new Pacman(x,y,w,h);
     }        
     void Pacman::keyDown(const SDL_Event& event){
-        switch(event.key.keysym.sym){
+        /* switch(event.key.keysym.sym){
             case SDLK_RIGHT: getRect().x++; break;
             case SDLK_LEFT: getRect().x--; break;
             case SDLK_DOWN: getRect().y++; break;
             case SDLK_UP: getRect().y--; break;
-        }
+        } */
     }
 
     void Pacman::keyUp(const SDL_Event&){

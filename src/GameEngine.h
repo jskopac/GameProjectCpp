@@ -1,6 +1,7 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 #include "Sprite.h"
+#include <memory>
 
 #include <vector>
 
@@ -13,12 +14,12 @@ namespace game{
     class GameEngine{
 
         public:
-            void add(Sprite* s);
-            void remove(Sprite* s);
+            void add(std::shared_ptr<Sprite> s);
+            void remove(std::shared_ptr<Sprite> s);
             void run();
 
         private:
-        vector<Sprite*> sprites;
+        std::vector<std::shared_ptr<Sprite>> sprites;
 
     };
 

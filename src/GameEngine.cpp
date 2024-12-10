@@ -3,15 +3,18 @@
 #include "Init.h"
 #include "Pacman.h"
 #include <iostream>
+#include <memory>
+
+
 #define FPS 60 
 
 namespace game
 {
 
-    void GameEngine ::add(Sprite *s)
+    void GameEngine ::add(std::shared_ptr<Sprite> s)
     {
         sprites.push_back(s);
-        std::cout << "Something was added!" << std::endl;
+        //std::cout << "Something was added!" << std::endl;
     }
 
     void GameEngine ::run()
@@ -33,13 +36,13 @@ namespace game
                     break;
 /*
                 case SDL_KEYDOWN:
-                    for (Sprite* s : sprites){
+                    for (const std::shared_ptr<Sprite>& s : sprites){
                         //metod som kallar action och skickar med event
                     }
                     break;
 
                 case SDL_KEYUP:
-                    for (Sprite* s : sprites){
+                    for (const shared_ptr<Sprite>& s : sprites){
                         //metod som kallar action och skickar med event
                     }
 */
@@ -47,8 +50,9 @@ namespace game
             }
 
             SDL_RenderClear(sys.get_ren());
-            for (Sprite* s : sprites)
+            for (const std::shared_ptr<Sprite>&  s : sprites){
 			    s->draw();
+            }   
             SDL_RenderPresent(sys.get_ren()); 
 
 
