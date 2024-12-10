@@ -24,19 +24,46 @@ namespace game{
 
     } */
 
+
+   void Pacman:: moveDown(){
+        getRect().y++;
+        imagePath = "./resources/images/pac_down.png";
+        surf = IMG_Load(imagePath.c_str());
+        texture = SDL_CreateTextureFromSurface(sys.get_ren(), surf);
+        SDL_FreeSurface(surf);
+   }
+
+   void Pacman:: moveUp(){
+        getRect().y--;
+        imagePath = "./resources/images/pac_up.png";
+        surf = IMG_Load(imagePath.c_str());
+        texture = SDL_CreateTextureFromSurface(sys.get_ren(), surf);
+        SDL_FreeSurface(surf);
+    
+   }
+
     void Pacman :: moveRight(){
         getRect().x++;
+        imagePath = "./resources/images/pac_right.png";
+        surf = IMG_Load(imagePath.c_str());
+        texture = SDL_CreateTextureFromSurface(sys.get_ren(),surf);
+        SDL_FreeSurface(surf);
     }
 
-
+    void Pacman :: moveLeft(){
+        getRect().x--;
+        imagePath = "./resources/images/pac_left.png";
+        surf = IMG_Load(imagePath.c_str());
+        texture = SDL_CreateTextureFromSurface(sys.get_ren(), surf);
+        SDL_FreeSurface(surf);
+    }
 
     void Pacman::draw() {
         SDL_RenderCopy(sys.get_ren(), texture, NULL, &getRect()); 
     }
 
-    Pacman::Pacman(int x, int y, int w, int h) : Sprite(x,y,w,h){
-        string imagePath = "./resources/images/pac_right.png";
-        SDL_Surface* surf = IMG_Load(imagePath.c_str());
+    Pacman::Pacman(int x, int y, int w, int h) : Sprite(x,y,w,h), imagePath("./resources/images/pac_right.png"){
+        surf = IMG_Load(imagePath.c_str());
 
         if (surf == NULL) {
             std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;

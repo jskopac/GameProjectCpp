@@ -39,6 +39,12 @@ namespace game
                     for (const std::shared_ptr<Sprite>& s : sprites){
                         if (event.key.keysym.sym == SDLK_RIGHT) {
                             s -> moveRight();
+                        } if (event.key.keysym.sym == SDLK_LEFT){
+                            s -> moveLeft();
+                        } if (event.key.keysym.sym == SDLK_UP){
+                            s -> moveUp();
+                        } if (event.key.keysym.sym == SDLK_DOWN){
+                            s -> moveDown();
                         }
                     }
                     break;

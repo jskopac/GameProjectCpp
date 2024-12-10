@@ -19,8 +19,10 @@ namespace game{
 
             // we should have general movements for sprites in general. Not pacman specifics. 
             
-            
+            virtual void moveDown(){}; 
+            virtual void moveUp(){};
             virtual void moveRight(){};
+            virtual void moveLeft(){};
             virtual void draw() = 0;
             SDL_Rect& getRect();
 

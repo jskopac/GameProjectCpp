@@ -15,7 +15,10 @@ namespace game{
         //void keyDown(const SDL_Event&);
        // void keyUp(const SDL_Event&);
 
+        virtual void moveDown();
+        virtual void moveUp();
         virtual void moveRight();
+        virtual void moveLeft();
         void draw();
         Pacman(int x, int y, int w, int h);
 
@@ -27,6 +30,8 @@ namespace game{
             "./resources/images/pac-up.png"
         };
         SDL_Texture* texture;
+        string imagePath;
+        SDL_Surface* surf;
 
     };
 
