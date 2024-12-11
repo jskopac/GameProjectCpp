@@ -1,7 +1,7 @@
 #include "Init.h"
 #include <SDL.h>
 
-namespace game{
+namespace game_engine{
 
     Init::Init(){
 

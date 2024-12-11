@@ -3,12 +3,13 @@
 #include "Init.h"
 #include "Pacman.h"
 #include <iostream>
+#include <string>
 #include <memory>
 
 
 #define FPS 60 
 
-namespace game
+namespace game_engine
 {
 
     void GameEngine ::add(std::shared_ptr<Sprite> s)
@@ -16,6 +17,8 @@ namespace game
         sprites.push_back(s);
         //std::cout << "Something was added!" << std::endl;
     }
+
+    //remove function
 
     void GameEngine ::run()
     {

@@ -2,14 +2,14 @@
 #define GAME_ENGINE_H
 #include "Sprite.h"
 #include <memory>
-
+#include <string>
 #include <vector>
 
 
 using namespace std;
 
 
-namespace game{
+namespace game_engine{ 
 
     class GameEngine{
 

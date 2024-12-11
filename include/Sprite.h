@@ -2,28 +2,23 @@
 #define SPRITE_H
 #include <SDL.h>
 #include <memory>
+#include <string>
 
-namespace game{
+namespace game_engine{
 
     class Sprite{
 
-        public:
-
-            //maybe we should have these in the game engine, and instead have functions here that is more explanatory like move forward
-            // backward etc.
-            //virtual void keyDown(const SDL_Event&){};
-            //virtual void keyUp(const SDL_Event&){};
-            //mouse down 
-            //mouse up
-
-
-            // we should have general movements for sprites in general. Not pacman specifics. 
-            
-            virtual void moveDown(){}; 
-            virtual void moveUp(){};
-            virtual void moveRight(){};
-            virtual void moveLeft(){};
+        public: 
+            virtual void moveDown(){}
+            virtual void moveUp(){}
+            virtual void moveRight(){}
+            virtual void moveLeft(){}
             virtual void draw() = 0;
+
+
+            SDL_Texture& getTexture();
+            void prepareTexture(std::string& image);
+            SDL_Surface& getSurf();
             SDL_Rect& getRect();
 
             //creates a shared_ptr that the subclasses can use.
@@ -41,6 +36,8 @@ namespace game{
 
         private:
             SDL_Rect rect;
+            SDL_Texture *texture; 
+            SDL_Surface *surf;
             Sprite(const Sprite&) = delete;
             const Sprite& operator = (const Sprite&) = delete;
 

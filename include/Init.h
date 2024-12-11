@@ -2,7 +2,7 @@
 #define INIT_H
 #include <SDL.h>
 
-namespace game {
+namespace game_engine {
 
     class Init {
 

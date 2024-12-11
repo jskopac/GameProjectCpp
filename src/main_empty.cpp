@@ -6,7 +6,7 @@
 #include <memory>
 
 
-using namespace game;
+using namespace game_engine;
 
 int main(int argc, char ** argv){
     GameEngine ses;
