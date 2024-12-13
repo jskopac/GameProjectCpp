@@ -11,18 +11,23 @@ using namespace game_engine;
 
 Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./resources/images/pac_right.png")
 {
-    prepareTexture(imagePath);
+    const std::vector<std::string> imagePaths = {
+        "./resources/images/pac_down.png",
+        "./resources/images/pac_up.png",
+        "./resources/images/pac_right.png",
+        "./resources/images/pac_left.png"
+    };
+    
+    for (const auto& path : imagePaths) {
+        prepareTexture(path);
+    }
 
-}
-
-Pacman *Pacman::getInstance(int x, int y, int w, int h)
-{
-    return new Pacman(x, y, w, h);
 }
 
 void Pacman::moveDown()
 {
     getRect().y++;
+    
 }
 
 void Pacman::moveUp()

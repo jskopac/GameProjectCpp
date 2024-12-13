@@ -2,6 +2,7 @@
 #define SPRITE_H
 #include <SDL.h>
 #include <memory>
+#include <vector>
 #include <string>
 
 namespace game_engine{
@@ -17,7 +18,7 @@ namespace game_engine{
 
 
             SDL_Texture& getTexture();
-            void prepareTexture(std::string& image);
+            void prepareTexture(const std::string& image);
             SDL_Surface& getSurf();
             SDL_Rect& getRect();
 

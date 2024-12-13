@@ -10,7 +10,8 @@ using namespace game_engine;
 
 int main(int argc, char ** argv){
     GameEngine ses;
-    std::shared_ptr<Pacman> test = std::make_shared<Pacman>(100,100,32,32);
+    // do we have to create using make_shared?
+    std::shared_ptr<Pacman> test = Pacman::getInstance(100,100,32,32);
     ses.add(test);
     ses.run();
 
