@@ -25,6 +25,4 @@ protected:
 private:
     string imagePath;
 };
-
-
 #endif

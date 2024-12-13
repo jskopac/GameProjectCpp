@@ -1,7 +1,6 @@
 #include "GameEngine.h"
 #include "Sprite.h"
 #include "Init.h"
-#include "Pacman.h"
 #include <iostream>
 #include <string>
 #include <memory>
