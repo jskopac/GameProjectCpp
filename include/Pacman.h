@@ -27,10 +27,4 @@ private:
 };
 
 
-std::shared_ptr<Pacman> getInstance(int x, int y, int w, int h)
-{
-    return std::shared_ptr<Pacman>(new Pacman(x, y, w, h));
-}
-
-
 #endif

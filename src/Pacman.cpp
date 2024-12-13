@@ -50,3 +50,9 @@ void Pacman::draw()
     SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
 }
 
+std::shared_ptr<Pacman> Pacman::getInstance(int x, int y, int w, int h)
+{
+    return std::shared_ptr<Pacman>(new Pacman(x, y, w, h));
+    
+}
+
