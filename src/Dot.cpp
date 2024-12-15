@@ -18,3 +18,9 @@ std::shared_ptr<Dot> Dot:: getInstance(int x, int y, int w, int h){
 void Dot :: draw(){
     SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
 }
+
+bool Dot :: isColliding(const std::shared_ptr<Sprite> other) const{
+    SDL_Rect thisRect = getRect();
+    SDL_Rect otherRect = other -> getRect();
+    return SDL_HasIntersection(&thisRect, &otherRect);   
+}

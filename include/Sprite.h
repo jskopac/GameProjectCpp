@@ -15,18 +15,18 @@ namespace game_engine{
             virtual void moveRight(){}
             virtual void moveLeft(){}
             virtual void draw() = 0;
+            virtual bool isColliding(const std::shared_ptr<Sprite> other) const;
 
 
-            SDL_Texture& getTexture();
+            SDL_Texture& getTexture() const;
             void prepareTexture(const std::string& image);
-            SDL_Surface& getSurf();
+            SDL_Surface& getSurf() const;
             SDL_Rect& getRect();
+            const SDL_Rect& getRect() const;
 
             //creates a shared_ptr that the subclasses can use.
             template <typename T, typename...Args>
             static std::shared_ptr<T>create(Args&& ... args){
-                //checks condition at runtime to ensure that the type T must inherit from Sprite. 
-                static_assert(std::is_base_of<Sprite, T> :: value, "T must be a subclass of Sprite");
                 // returns a created subclass object of Sprite that is stored on the heap. the shared_ptr is in charge of managing it. 
                 return std::make_shared<T>(std::forward<Args>(args)...);
             }

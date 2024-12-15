@@ -14,14 +14,16 @@ namespace game_engine
     void GameEngine ::add(std::shared_ptr<Sprite> s)
     {
         sprites.push_back(s);
-        //std::cout << "Something was added!" << std::endl;
     }
 
     //remove function
+    void GameEngine :: remove(std::shared_ptr<Sprite> s){
+        removed_sprites.push_back(s);
+    }
 
     void GameEngine ::run()
     {
-        const int tickInterval = 1000 / FPS;
+        const int tickInterval = 100 / FPS;
         Uint32 nextTick;
         int delay;
         bool quit = false;
@@ -58,10 +60,33 @@ namespace game_engine
                 }
             }
 
+
+            /* for (const std::shared_ptr<Sprite>& s: sprites){
+
+            } */
+
+
+
+
+            for (std::shared_ptr<Sprite> s : removed_sprites){
+                for (auto i = sprites.begin(); i != sprites.end();){
+                    if (*i == s){
+                        i = sprites.erase(i);
+                    }
+                    else{
+                        i++;
+                    }
+
+                }
+                
+            }
+
+
+            removed_sprites.clear();
             SDL_RenderClear(sys.get_ren());
             for (const std::shared_ptr<Sprite>&  s : sprites){
 			    s->draw();
-            }   
+            }  
             SDL_RenderPresent(sys.get_ren()); 
 
 
