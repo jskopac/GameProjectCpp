@@ -6,7 +6,7 @@
 #include <memory>
 
 
-#define FPS 60 
+#define FPS 60
 
 namespace game_engine
 {
@@ -42,13 +42,21 @@ namespace game_engine
                 case SDL_KEYDOWN:
                     for (const std::shared_ptr<Sprite>& s : sprites){
                         if (event.key.keysym.sym == SDLK_RIGHT) {
-                            s -> moveRight();
+                            if (s -> getRect().x < 800){
+                                s -> moveRight();
+                            }
                         } if (event.key.keysym.sym == SDLK_LEFT){
-                            s -> moveLeft();
+                            if (s ->getRect().x > 0){
+                                s -> moveLeft();
+                            }
                         } if (event.key.keysym.sym == SDLK_UP){
-                            s -> moveUp();
+                            if (s -> getRect().y > 0){
+                                s -> moveUp();
+                            }
                         } if (event.key.keysym.sym == SDLK_DOWN){
-                            s -> moveDown();
+                            if (s -> getRect().y < 600){
+                                s -> moveDown();
+                            }
                         }
                     }
                     break;
@@ -81,15 +89,14 @@ namespace game_engine
                     else{
                         i++;
                     }
-
-                }
-                
+                }  
             }
 
 
             removed_sprites.clear();
             SDL_RenderClear(sys.get_ren());
             for (const std::shared_ptr<Sprite>&  s : sprites){
+                s->auto_move();
 			    s->draw();
             }  
             SDL_RenderPresent(sys.get_ren()); 

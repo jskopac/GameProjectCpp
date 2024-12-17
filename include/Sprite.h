@@ -10,6 +10,7 @@ namespace game_engine{
     class Sprite{
 
         public: 
+            virtual void auto_move(){}
             virtual void moveDown(){}
             virtual void moveUp(){}
             virtual void moveRight(){}

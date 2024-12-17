@@ -1,10 +1,13 @@
 #include "Pacman.h"
+#include "Wall.h"
 #include "Ghost.h"
 #include <SDL.h>
-#include <string>
 #include "Init.h"
 #include "Sprite.h"
 #include <iostream>
+#include <string>
+#include <memory>
+#include "GameEngine.h"
 
 using namespace std;
 using namespace game_engine;
@@ -26,23 +29,31 @@ Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./re
 
 void Pacman::moveDown()
 {
-    getRect().y++;
+    getRect().y += 2;
     
 }
+    
 
 void Pacman::moveUp()
 {
-    getRect().y--;
+    getRect().y-=2;
+       
+    
 }
 
 void Pacman ::moveRight()
 {
-    getRect().x++;
+    getRect().x+=2;
+
+
 }
 
 void Pacman ::moveLeft()
 {
-    getRect().x--;
+
+    getRect().x-=2;
+
+    
 }
 
 void Pacman::draw()
@@ -65,7 +76,10 @@ bool Pacman:: isColliding(const std::shared_ptr<Sprite> other) const{
 
 void Pacman ::  onCollision(const std:: shared_ptr<Sprite> other){
     if (dynamic_pointer_cast<Ghost>(other)){
-            markForRemoval();
-        }
+        markForRemoval();
+    } if (dynamic_pointer_cast<Wall>(other)){
+        wallFlag = true;
+    }
+    
 }
 

@@ -18,3 +18,18 @@ std::shared_ptr<Ghost> Ghost:: getInstance(int x, int y, int w, int h){
 void Ghost :: draw(){
     SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
 }
+
+void Ghost :: auto_move(){
+    if (getRect().y == 0){
+        directionFlag = true;
+    }
+    if(getRect().y == 600){
+        directionFlag = false;    
+    } 
+
+    if (directionFlag){
+        getRect().y++;
+    } else {
+        getRect().y--;
+    }
+}
