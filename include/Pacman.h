@@ -17,12 +17,11 @@ public:
     virtual void moveRight();
     virtual void moveLeft();
     void draw();
-    
-    
-protected:
-    Pacman(int x, int y, int w, int h);
+    bool isColliding(const std::shared_ptr<Sprite> other) const;
+    void onCollision(const std:: shared_ptr<Sprite> other);
 
 private:
+    Pacman(int x, int y, int w, int h);
     string imagePath;
 };
 #endif

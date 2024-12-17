@@ -1,5 +1,5 @@
-#ifndef DOTS
-#define DOTS
+#ifndef DOT
+#define DOT
 #include "Sprite.h"
 #include <string>
 #include <memory>
@@ -17,11 +17,8 @@
             bool isColliding(const std::shared_ptr<Sprite> other) const;
             void onCollision(const std:: shared_ptr<Sprite> other);
 
-        protected:
-            Dot(int x, int y, int w, int h);
-
-
         private:
+            Dot(int x, int y, int w, int h);
             string imagePath;
 
 

@@ -63,13 +63,13 @@ namespace game_engine
                     }
                 }
             }
-
+            //should we pass Sprite& instead of Sprie?
             for (std::shared_ptr<Sprite> s : sprites){
                 if (s -> isMarkedForRemoval()){
                     remove(s);
+                    s -> unmarkForRemoval();
                 }
             } 
-
 
 
 

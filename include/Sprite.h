@@ -19,6 +19,7 @@ namespace game_engine{
             virtual void onCollision(const std:: shared_ptr<Sprite> other){}
             const bool isMarkedForRemoval(); 
             void markForRemoval();
+            void unmarkForRemoval();
 
             SDL_Texture& getTexture() const;
             void prepareTexture(const std::string& image);

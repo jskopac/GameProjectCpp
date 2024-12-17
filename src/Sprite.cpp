@@ -33,4 +33,8 @@ namespace game_engine
         remove = true;
     }
 
+    void Sprite :: unmarkForRemoval(){
+        remove = false;
+    }
+
 }
