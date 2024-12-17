@@ -16,13 +16,15 @@ namespace game_engine{
             virtual void moveLeft(){}
             virtual void draw() = 0;
             virtual bool isColliding(const std::shared_ptr<Sprite> other) const;
-
+            virtual void onCollision(const std:: shared_ptr<Sprite> other){}
+            const bool isMarkedForRemoval(); 
+            void markForRemoval();
 
             SDL_Texture& getTexture() const;
             void prepareTexture(const std::string& image);
             SDL_Surface& getSurf() const;
             SDL_Rect& getRect();
-            const SDL_Rect& getRect() const;
+            const SDL_Rect& getRect() const; // is this one really needed? We are getting error messages without it. 
 
             //creates a shared_ptr that the subclasses can use.
             template <typename T, typename...Args>
@@ -41,6 +43,7 @@ namespace game_engine{
             SDL_Surface *surf;
             Sprite(const Sprite&) = delete;
             const Sprite& operator = (const Sprite&) = delete;
+            bool remove;
 
     };
 

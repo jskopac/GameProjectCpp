@@ -1,4 +1,5 @@
 #include "Dot.h"
+#include "Pacman.h"
 #include "Init.h"
 #include <memory>
 #include <string>
@@ -23,4 +24,10 @@ bool Dot :: isColliding(const std::shared_ptr<Sprite> other) const{
     SDL_Rect thisRect = getRect();
     SDL_Rect otherRect = other -> getRect();
     return SDL_HasIntersection(&thisRect, &otherRect);   
+}
+
+void Dot :: onCollision(const std:: shared_ptr<Sprite> other){
+        if (dynamic_pointer_cast<Pacman>(other)){
+            markForRemoval();
+        }
 }

@@ -52,18 +52,23 @@ namespace game_engine
                         }
                     }
                     break;
-
-               /*  case SDL_KEYUP:
-                    for (const shared_ptr<Sprite>& s : sprites){
-                        //metod som kallar action och skickar med event
-                    } */
                 }
             }
 
+            for (std::shared_ptr<Sprite> s1 : sprites){
+                for(std::shared_ptr<Sprite> s2 : sprites){
+                    if (s1 != s2 && s1 -> isColliding(s2)){
+                        s1 -> onCollision(s2);
+                        s2 -> onCollision(s1);
+                    }
+                }
+            }
 
-            /* for (const std::shared_ptr<Sprite>& s: sprites){
-
-            } */
+            for (std::shared_ptr<Sprite> s : sprites){
+                if (s -> isMarkedForRemoval()){
+                    remove(s);
+                }
+            } 
 
 
 

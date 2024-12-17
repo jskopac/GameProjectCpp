@@ -9,9 +9,9 @@ using namespace std;
 namespace game_engine
 {
 
-    Sprite ::Sprite(int x, int y, int w, int h) : rect{x, y, w, h} {}
+    Sprite ::Sprite(int x, int y, int w, int h) : rect{x, y, w, h}, remove(false) {}
     SDL_Rect &Sprite ::getRect() { return rect; }
-    const SDL_Rect &Sprite ::getRect() const { return rect; } // is this a good design?
+    const SDL_Rect &Sprite ::getRect() const { return rect; } // is this one really needed? We are getting error messages without it. 
 
     SDL_Texture &Sprite ::getTexture() const { return *texture; };
     SDL_Surface &Sprite ::getSurf() const { return *surf; };
@@ -23,6 +23,14 @@ namespace game_engine
         texture = SDL_CreateTextureFromSurface(sys.get_ren(), surf);
         SDL_FreeSurface(surf);
 
+    }
+
+    const bool Sprite:: isMarkedForRemoval(){
+        return remove;
+    }
+
+    void Sprite :: markForRemoval(){
+        remove = true;
     }
 
 }

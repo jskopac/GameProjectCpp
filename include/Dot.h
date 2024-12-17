@@ -15,7 +15,7 @@
             static std::shared_ptr<Dot> getInstance(int x, int y, int w, int h);
             void draw();
             bool isColliding(const std::shared_ptr<Sprite> other) const;
-
+            void onCollision(const std:: shared_ptr<Sprite> other);
 
         protected:
             Dot(int x, int y, int w, int h);
