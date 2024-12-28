@@ -19,6 +19,7 @@ namespace game_engine{
             const bool isMarkedForRemoval(); 
             void markForRemoval();
             void unmarkForRemoval();
+            virtual ~Sprite();
 
             SDL_Texture& getTexture() const;
             void prepareTexture(const std::string& image);
