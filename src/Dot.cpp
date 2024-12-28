@@ -12,7 +12,7 @@ Dot::Dot(int x, int y, int w, int h) : Sprite(x,y,w,h), imagePath("./resources/i
     prepareTexture(imagePath);
 }
 
-std::shared_ptr<Dot> Dot:: getInstance(int x, int y, int w, int h){
+std::shared_ptr<Dot> Dot:: createInstance(int x, int y, int w, int h){
     return std::shared_ptr<Dot>(new Dot(x, y, w, h));
 }
 

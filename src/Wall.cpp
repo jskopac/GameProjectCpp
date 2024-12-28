@@ -12,7 +12,7 @@ Wall :: Wall(int x, int y, int w, int h) : Sprite(x,y,w,h), imagePath("./resourc
     prepareTexture(imagePath);
 }
 
-std::shared_ptr<Wall> Wall :: getInstance(int x, int y, int w, int h){
+std::shared_ptr<Wall> Wall :: createInstance(int x, int y, int w, int h){
     return std::shared_ptr<Wall>(new Wall(x,y,w,h));
 }
 

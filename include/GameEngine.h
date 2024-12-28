@@ -14,13 +14,14 @@ namespace game_engine{
     class GameEngine{
 
         public:
-            void add(std::shared_ptr<Sprite> s);
-            void remove(std::shared_ptr<Sprite> s);
+            void add(shared_ptr<Sprite> s);
+            void remove(shared_ptr<Sprite> s);
             void run();
+            void gameOver();
 
         private:
-        std::vector<std::shared_ptr<Sprite>> sprites;
-        std::vector<std::shared_ptr<Sprite>> removed_sprites;
+            vector<std::shared_ptr<Sprite>> sprites;
+            vector<std::shared_ptr<Sprite>> removed_sprites;
 
     };
 

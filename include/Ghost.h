@@ -9,7 +9,7 @@ using namespace game_engine;
 class Ghost : public Sprite{
 
 public:
-    static std::shared_ptr<Ghost> getInstance(int x, int y, int w, int h);
+    static std::shared_ptr<Ghost> createInstance(int x, int y, int w, int h);
     void draw();
     void auto_move();
 

@@ -17,8 +17,8 @@ Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./re
     const std::vector<std::string> imagePaths = {
         "./resources/images/pac_down.png",
         "./resources/images/pac_up.png",
-        "./resources/images/pac_right.png",
-        "./resources/images/pac_left.png"
+        "./resources/images/pac_left.png",
+        "./resources/images/pac_right.png"
     };
     
     for (const auto& path : imagePaths) {
@@ -27,33 +27,30 @@ Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./re
 
 }
 
-void Pacman::moveDown()
-{
-    getRect().y += 2;
-    
-}
-    
+void Pacman::tick(const SDL_Event& event){
 
-void Pacman::moveUp()
-{
-    getRect().y-=2;
-       
-    
-}
-
-void Pacman ::moveRight()
-{
-    getRect().x+=2;
-
-
-}
-
-void Pacman ::moveLeft()
-{
-
-    getRect().x-=2;
-
-    
+    if (event.type == SDL_KEYDOWN) {
+        if (event.key.keysym.sym == SDLK_LEFT) {
+            if (getRect().x < 800){
+                getRect().x -= 2; 
+            }
+        }
+        if (event.key.keysym.sym == SDLK_RIGHT) {
+            if (getRect().x > 0){
+                getRect().x += 2; 
+            }
+        }
+        if (event.key.keysym.sym == SDLK_UP) {
+            if (getRect().y > 0){
+                getRect().y -= 2; 
+            }
+        }
+        if (event.key.keysym.sym == SDLK_DOWN) {
+            if (getRect().y < 800){
+                getRect().y += 2; 
+            } 
+        }
+    }
 }
 
 void Pacman::draw()
@@ -61,7 +58,7 @@ void Pacman::draw()
     SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
 }
 
-std::shared_ptr<Pacman> Pacman::getInstance(int x, int y, int w, int h)
+std::shared_ptr<Pacman> Pacman::createInstance(int x, int y, int w, int h)
 {
     return std::shared_ptr<Pacman>(new Pacman(x, y, w, h));
     
@@ -70,15 +67,13 @@ std::shared_ptr<Pacman> Pacman::getInstance(int x, int y, int w, int h)
 bool Pacman:: isColliding(const std::shared_ptr<Sprite> other) const{
     SDL_Rect thisRect = getRect();
     SDL_Rect otherRect = other -> getRect();
-    return SDL_HasIntersection(&thisRect, &otherRect);  
+    return SDL_HasIntersection(&thisRect, &otherRect);
 
 }
 
 void Pacman ::  onCollision(const std:: shared_ptr<Sprite> other){
     if (dynamic_pointer_cast<Ghost>(other)){
         markForRemoval();
-    } if (dynamic_pointer_cast<Wall>(other)){
-        wallFlag = true;
     }
     
 }

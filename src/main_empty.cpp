@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <memory>
+#include <vector>
 
 
 using namespace game_engine;
@@ -18,26 +19,36 @@ int main(int argc, char ** argv){
     //create game board with walls -> dots should be on the non walls x and y.
     for (int h = 0; h < 800; h+=30){
         for (int w = 0; w < 600; w+=30){
-            std::shared_ptr<Dot> d = Dot::getInstance(h,w,10,10);
+            std::shared_ptr<Dot> d = Dot::createInstance(h,w,10,10);
             ses.add(d);
             if(h == 0 || h == 770 || w == 0 || w == 570){
-                std::shared_ptr<Wall> t= Wall::getInstance(h,w,30,30);
+                std::shared_ptr<Wall> t= Wall::createInstance(h,w,30,30);
                 ses.add(t);
             }
         }
     }
-    
-
-
     //create sprites
-    // do we have to create using make_shared?
-    std::shared_ptr<Pacman> test = Pacman::getInstance(100,100,32,32);
-    std::shared_ptr<Ghost> test2 = Ghost::getInstance(300,0, 32, 32);
-    std::shared_ptr<Wall> test3 = Wall::getInstance(50,50,20,20);
+    std::shared_ptr<Pacman> pac = Pacman::createInstance(100,100,32,32);
+    std::shared_ptr<Ghost> ghost1 = Ghost::createInstance(140,0, 32, 32);
+    std::shared_ptr<Ghost> ghost2 = Ghost::createInstance(300,0, 32, 32);
+    std::shared_ptr<Ghost> ghost3 = Ghost::createInstance(500,300, 32, 32);
+    std::shared_ptr<Ghost> ghost4 = Ghost::createInstance(700,200, 32, 32);
+    std::shared_ptr<Ghost> ghost5 = Ghost::createInstance(800,500, 32, 32);
+    std::shared_ptr<Ghost> ghost6 = Ghost::createInstance(600,600, 32, 32);
+    std::shared_ptr<Ghost> ghost7 = Ghost::createInstance(160,500, 32, 32);
+    std::shared_ptr<Ghost> ghost8 = Ghost::createInstance(200,600, 32, 32);
+
 
     //add sprites to session. 
-    ses.add(test);
-    ses.add(test2);
+    ses.add(pac);
+    ses.add(ghost1);
+    ses.add(ghost2);
+    ses.add(ghost3);
+    ses.add(ghost4);
+    ses.add(ghost5);
+    ses.add(ghost6);
+    ses.add(ghost7);
+    ses.add(ghost8);
 
     //run
     ses.run();

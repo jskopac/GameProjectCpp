@@ -11,13 +11,11 @@ namespace game_engine{
 
         public: 
             virtual void auto_move(){}
-            virtual void moveDown(){}
-            virtual void moveUp(){}
-            virtual void moveRight(){}
-            virtual void moveLeft(){}
+            virtual void tick(const SDL_Event& event){}
             virtual void draw() = 0;
             virtual bool isColliding(const std::shared_ptr<Sprite> other) const;
             virtual void onCollision(const std:: shared_ptr<Sprite> other){}
+            virtual bool isGamePlayer(){return false;}
             const bool isMarkedForRemoval(); 
             void markForRemoval();
             void unmarkForRemoval();

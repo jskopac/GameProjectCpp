@@ -10,7 +10,7 @@ using namespace game_engine;
 class Wall : public Sprite {
 
 public:
-    static std::shared_ptr<Wall> getInstance(int x, int y, int w, int h);
+    static std::shared_ptr<Wall> createInstance(int x, int y, int w, int h);
     void draw();
 
 private:

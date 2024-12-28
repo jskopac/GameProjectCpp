@@ -10,7 +10,7 @@ Ghost :: Ghost(int x, int y, int w, int h) : Sprite(x,y,w,h), imagePath("./resou
     prepareTexture(imagePath);
 }
 
-std::shared_ptr<Ghost> Ghost:: getInstance(int x, int y, int w, int h){
+std::shared_ptr<Ghost> Ghost:: createInstance(int x, int y, int w, int h){
     return std::shared_ptr<Ghost>(new Ghost(x, y, w, h));
 
 }
