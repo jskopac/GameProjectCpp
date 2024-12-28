@@ -1,5 +1,5 @@
 #include "Init.h"
-#include <SDL.h>
+
 
 namespace game_engine{
 

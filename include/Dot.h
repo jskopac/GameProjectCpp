@@ -1,8 +1,11 @@
 #ifndef DOT
 #define DOT
 #include "Sprite.h"
+#include "Pacman.h"
+#include "Init.h" 
 #include <string>
 #include <memory>
+#include <SDL.h>
 
 
     using namespace std;

@@ -1,9 +1,12 @@
 #ifndef SPRITE_H
 #define SPRITE_H
+#include "Init.h"
+#include <SDL_image.h>
 #include <SDL.h>
 #include <memory>
 #include <vector>
 #include <string>
+
 
 namespace game_engine{
 

@@ -1,6 +1,13 @@
 #ifndef PACMAN_H
 #define PACMAN_H
 #include "Sprite.h"
+#include "Wall.h"
+#include "Ghost.h"
+#include "Init.h"
+#include "GameEngine.h"
+#include <SDL.h>
+#include <iostream>
+#include <memory>
 #include <vector>
 #include <string>
 

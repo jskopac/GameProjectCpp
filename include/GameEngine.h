@@ -1,6 +1,9 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 #include "Sprite.h"
+#include "Init.h"
+#include <SDL.h>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <vector>

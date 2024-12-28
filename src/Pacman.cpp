@@ -1,13 +1,5 @@
 #include "Pacman.h"
-#include "Wall.h"
-#include "Ghost.h"
-#include <SDL.h>
-#include "Init.h"
-#include "Sprite.h"
-#include <iostream>
-#include <string>
-#include <memory>
-#include "GameEngine.h"
+
 
 using namespace std;
 using namespace game_engine;

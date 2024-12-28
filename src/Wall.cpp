@@ -1,9 +1,5 @@
 #include "Wall.h"
-#include "Sprite.h"
-#include "Init.h"
-#include <string>
-#include <SDL.h>
-#include <memory>
+
 
 using namespace game_engine;
 

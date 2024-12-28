@@ -1,7 +1,9 @@
 #ifndef GHOST
 #define GHOST
-
 #include "Sprite.h"
+#include "Init.h"
+#include <SDL.h>
+#include <memory>
 
 using namespace std;
 using namespace game_engine;
