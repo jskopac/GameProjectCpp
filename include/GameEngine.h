@@ -22,6 +22,7 @@ namespace game_engine{
         private:
             vector<std::shared_ptr<Sprite>> sprites;
             vector<std::shared_ptr<Sprite>> removed_sprites;
+            bool game_over;
 
     };
 

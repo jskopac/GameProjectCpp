@@ -6,7 +6,6 @@
 #include <string>
 #include <memory>
 
-
 #define FPS 60
 
 namespace game_engine
@@ -17,8 +16,9 @@ namespace game_engine
         sprites.push_back(s);
     }
 
-    //remove function
-    void GameEngine :: remove(std::shared_ptr<Sprite> s){
+    // remove function
+    void GameEngine ::remove(std::shared_ptr<Sprite> s)
+    {
         removed_sprites.push_back(s);
     }
 
@@ -35,71 +35,116 @@ namespace game_engine
             SDL_Event event;
             while (SDL_PollEvent(&event))
             {
-                if (event.type == SDL_QUIT){
+                if (event.type == SDL_QUIT)
+                {
                     quit = true;
                 }
 
-                for (std::shared_ptr<Sprite> s: sprites){
-                    s -> tick(event);
+                for (std::shared_ptr<Sprite> s : sprites)
+                {
+                    s->tick(event);
                 }
             }
 
-
-            //checks for collision and onCollision method marks the sprite that is supposed to be removed due to the collision
-            for (std::shared_ptr<Sprite> s1 : sprites){
-                for(std::shared_ptr<Sprite> s2 : sprites){
-                    if (s1 != s2 && s1 -> isColliding(s2)){
-                        s1 -> onCollision(s2);
-                        s2 -> onCollision(s1);
+            // checks for collision and onCollision method marks the sprite that is supposed to be removed due to the collision
+            for (std::shared_ptr<Sprite> s1 : sprites)
+            {
+                for (std::shared_ptr<Sprite> s2 : sprites)
+                {
+                    if (s1 != s2 && s1->isColliding(s2))
+                    {
+                        s1->onCollision(s2);
+                        s2->onCollision(s1);
                     }
                 }
             }
-            //checks for which sprites are marked for removal and adds calls the remove method that pushes the marked sprite to a remove vector. 
-            //should we pass Sprite& instead of Sprite?
-            for (std::shared_ptr<Sprite> s : sprites){
-                if (s -> isMarkedForRemoval()){
+            // checks for which sprites are marked for removal and adds calls the remove method that pushes the marked sprite to a remove vector.
+            // should we pass Sprite& instead of Sprite?
+            for (std::shared_ptr<Sprite> s : sprites)
+            {
+                if (s->isMarkedForRemoval())
+                {
                     remove(s);
-                    if (s->isGamePlayer()){
-                        gameOver();
+                    if (s->isGamePlayer())
+                    {
+                        game_over = true;
+                        quit = true;
                     }
                 }
-            } 
-            //removes sprites that are in the remove vector and also erase it from the game engine vector.
-            for (std::shared_ptr<Sprite> s : removed_sprites){
-                for (auto i = sprites.begin(); i != sprites.end();){
-                    if (*i == s){
+            }
+
+            // removes sprites that are in the remove vector and also erase it from the game engine vector.
+            for (std::shared_ptr<Sprite> s : removed_sprites)
+            {
+                for (auto i = sprites.begin(); i != sprites.end();)
+                {
+                    if (*i == s)
+                    {
                         i = sprites.erase(i);
                     }
-                    else{
+                    else
+                    {
                         i++;
                     }
-                }  
+                }
             }
-
 
             removed_sprites.clear();
             SDL_RenderClear(sys.get_ren());
-            for (const std::shared_ptr<Sprite>&  s : sprites){
-                s -> auto_move();
-			    s->draw();
-            }  
+            for (const std::shared_ptr<Sprite> &s : sprites)
+            {
+                s->auto_move();
+                s->draw();
+            }
             SDL_RenderPresent(sys.get_ren());
 
-
             delay = nextTick - SDL_GetTicks();
-            if (delay > 0){
+            if (delay > 0)
+            {
                 SDL_Delay(delay);
             }
+        }
+
+        if (game_over)
+        {
+            gameOver();
         }
     }
 
 
-    void GameEngine::gameOver(){
+    //beutify this.
 
-        //SDL_Window* game_over_win = SDL_CreateWindow("Game Over", SDL_WINDOWPOS_CENTERED, 600, 500, SDL_WINDOW_SHOWN);
+    void GameEngine::gameOver()
+    {
 
+        std::string text = "Game Over";
+        SDL_Surface *game_over_surf = TTF_RenderText_Solid(sys.get_font(), text.c_str(), {255, 255, 255});
+        SDL_Texture *game_over_text = SDL_CreateTextureFromSurface(sys.get_ren(), game_over_surf);
+        SDL_Rect text_rect = {100, 100, 0, 0};
+        SDL_QueryTexture(game_over_text, NULL, NULL, &text_rect.w, &text_rect.h); // Query the texture for its size
 
+        // Clear the renderer (optional if you want to reset the background)
+        SDL_RenderClear(sys.get_ren()); 
 
+        // Render the "Game Over" text
+        SDL_RenderCopy(sys.get_ren(), game_over_text, nullptr, &text_rect);
+
+        // Present the renderer to show the updated window
+        SDL_RenderPresent(sys.get_ren());
+
+        bool quit;
+        while (!quit)
+        {
+            SDL_Event event;
+            while (SDL_PollEvent(&event))
+            {
+                if (event.type == SDL_QUIT)
+                {
+                    quit = true;
+                }
+            }
+        }
     }
+    
 }
 
