@@ -2,6 +2,9 @@
 #define WALL
 
 #include "Sprite.h"
+#include "Init.h"
+#include <SDL.h>
+#include <memory>
 #include <string>
 
 using namespace std;

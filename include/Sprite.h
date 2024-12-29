@@ -1,21 +1,27 @@
 #ifndef SPRITE_H
 #define SPRITE_H
+#include "Init.h"
+#include <SDL_image.h>
 #include <SDL.h>
 #include <memory>
 #include <vector>
 #include <string>
+
 
 namespace game_engine{
 
     class Sprite{
 
         public: 
-            virtual void auto_move(){}
+            virtual bool isGamePlayer(){return false;}
+
             virtual void tick(const SDL_Event& event){}
             virtual void draw() = 0;
+            virtual void auto_move(){}
+
             virtual bool isColliding(const std::shared_ptr<Sprite> other) const;
             virtual void onCollision(const std:: shared_ptr<Sprite> other){}
-            virtual bool isGamePlayer(){return false;}
+
             const bool isMarkedForRemoval(); 
             void markForRemoval();
             void unmarkForRemoval();
@@ -49,9 +55,4 @@ namespace game_engine{
     };
 
 }   
-
-
-
-
-
 #endif

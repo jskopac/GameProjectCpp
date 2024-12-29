@@ -1,8 +1,5 @@
 #include "Ghost.h"
-#include "Init.h"
-#include "Sprite.h"
-#include <SDL.h>
-#include <memory>
+
 
 using namespace game_engine;
 
