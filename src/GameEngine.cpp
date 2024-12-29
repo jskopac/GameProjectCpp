@@ -116,20 +116,14 @@ namespace game_engine
 
     void GameEngine::gameOver()
     {
-
         std::string text = "Game Over";
         SDL_Surface *game_over_surf = TTF_RenderText_Solid(sys.get_font(), text.c_str(), {255, 255, 255});
         SDL_Texture *game_over_text = SDL_CreateTextureFromSurface(sys.get_ren(), game_over_surf);
         SDL_Rect text_rect = {100, 100, 0, 0};
         SDL_QueryTexture(game_over_text, NULL, NULL, &text_rect.w, &text_rect.h); // Query the texture for its size
 
-        // Clear the renderer (optional if you want to reset the background)
         SDL_RenderClear(sys.get_ren()); 
-
-        // Render the "Game Over" text
         SDL_RenderCopy(sys.get_ren(), game_over_text, nullptr, &text_rect);
-
-        // Present the renderer to show the updated window
         SDL_RenderPresent(sys.get_ren());
 
         bool quit;

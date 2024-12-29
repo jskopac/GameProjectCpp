@@ -17,12 +17,13 @@ int main(int argc, char ** argv){
 
     GameEngine ses;
     //create game board with walls -> dots should be on the non walls x and y.
-    for (int h = 0; h < 800; h+=30){
-        for (int w = 0; w < 600; w+=30){
-            std::shared_ptr<Dot> d = Dot::createInstance(h,w,10,10);
+    for (int h = 0; h < 600; h += 30) {
+        for (int w = 0; w < 800; w += 30) {
+            std::shared_ptr<Dot> d = Dot::createInstance(w, h, 10, 10);
             ses.add(d);
-            if(h == 0 || h == 770 || w == 0 || w == 570){
-                std::shared_ptr<Wall> t= Wall::createInstance(h,w,30,30);
+
+            if (h == 0 || h == 570 || w == 0 || w > 770) { // Top, bottom, left, right
+                std::shared_ptr<Wall> t = Wall::createInstance(w, h, 30, 30);
                 ses.add(t);
             }
         }
