@@ -17,13 +17,17 @@ namespace game_engine{
             void remove(std::shared_ptr<Sprite> s);
             void run();
             void gameOver();
+            static void addScore();
 
         private:
             std::vector<std::shared_ptr<Sprite>> sprites;
             std::vector<std::shared_ptr<Sprite>> removed_sprites;
             bool game_over;
 
+
     };
+
+    extern GameEngine game;
 
     
 

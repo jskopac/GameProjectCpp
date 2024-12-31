@@ -11,7 +11,8 @@ namespace game_engine {
         public:
             static TextMenu* createInstance(int x, int y, int w, int h);
             void setText(const std::string& text);
-
+            void render();
+            SDL_Rect& getRect();
 
             ~TextMenu();
 

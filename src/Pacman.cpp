@@ -1,4 +1,5 @@
 #include "Pacman.h"
+#include "Dot.h"
 
 
 using namespace std;
@@ -63,11 +64,12 @@ bool Pacman:: isColliding(const std::shared_ptr<Sprite> other) const{
 
 }
 
-void Pacman ::  onCollision(const std:: shared_ptr<Sprite> other){
+void Pacman :: onCollision(const std:: shared_ptr<Sprite> other){
     if (dynamic_pointer_cast<Ghost>(other)){
         markForRemoval();
-    }
-    //om det är en dot så static points ++
-    
+    }   
 }
+
+bool Pacman :: isGamePlayer() {return true;}
+
 

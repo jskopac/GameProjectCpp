@@ -14,6 +14,7 @@ namespace game_engine{
 
         public: 
             virtual bool isGamePlayer(){return false;}
+            virtual bool isTarget(){return false;};
 
             virtual void tick(const SDL_Event& event){}
             virtual void draw() = 0;

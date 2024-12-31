@@ -17,7 +17,7 @@
             void draw();
             bool isColliding(const std::shared_ptr<Sprite> other) const;
             void onCollision(const std:: shared_ptr<Sprite> other);
-
+            bool isTarget();
         private:
             Dot(int x, int y, int w, int h);
             std::string imagePath;

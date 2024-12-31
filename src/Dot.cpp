@@ -27,3 +27,7 @@ void Dot :: onCollision(const std:: shared_ptr<Sprite> other){
             markForRemoval();
         }
 }
+
+bool Dot:: isTarget(){
+    return true;
+}

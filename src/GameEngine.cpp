@@ -7,6 +7,8 @@
 namespace game_engine
 {
 
+    static int score = 0;
+
     void GameEngine ::add(std::shared_ptr<Sprite> s)
     {
         sprites.push_back(s);
@@ -18,9 +20,13 @@ namespace game_engine
         removed_sprites.push_back(s);
     }
 
+    void GameEngine::addScore(){
+        score++;
+    }
+
     void GameEngine ::run()
     {
-        TextMenu* text = TextMenu::createInstance(400,630,400,50);
+        TextMenu* text = TextMenu::createInstance(350,605,200,100);
         const int tickInterval = 1000 / FPS;
         Uint32 nextTick;
         int delay;
@@ -66,6 +72,9 @@ namespace game_engine
                         game_over = true;
                         quit = true;
                     }
+                    if (s->isTarget()){
+                        score++;
+                    }
                 }
             }
 
@@ -92,7 +101,8 @@ namespace game_engine
                 s->auto_move();
                 s->draw();
             }
-            text->setText("Hej");
+            text->setText("Score: " + std::to_string(score)); 
+            text->render();
             SDL_RenderPresent(sys.get_ren());
 
             delay = nextTick - SDL_GetTicks();
@@ -102,40 +112,29 @@ namespace game_engine
             }
         }
 
-       // if (game_over)
-       // {
-      //      gameOver();
-       // }
-    }
-
-
-    //redo this to instead change the text of point board. 
-
-    /* void GameEngine::gameOver()
-    {
-        std::string text = "Game Over";
-        SDL_Surface *game_over_surf = TTF_RenderText_Solid(sys.get_font(), text.c_str(), {255, 255, 255});
-        SDL_Texture *game_over_text = SDL_CreateTextureFromSurface(sys.get_ren(), game_over_surf);
-        SDL_Rect text_rect = {100, 100, 0, 0};
-        SDL_QueryTexture(game_over_text, NULL, NULL, &text_rect.w, &text_rect.h); // Query the texture for its size
-
-        SDL_RenderClear(sys.get_ren()); 
-        SDL_RenderCopy(sys.get_ren(), game_over_text, nullptr, &text_rect);
-        SDL_RenderPresent(sys.get_ren());
-
-        bool quit;
-        while (!quit)
-        {
-            SDL_Event event;
-            while (SDL_PollEvent(&event))
+        if (game_over){
+            bool quit;
+            while (!quit)
             {
-                if (event.type == SDL_QUIT)
+                SDL_Event event;
+                while (SDL_PollEvent(&event))
                 {
-                    quit = true;
+                    if (event.type == SDL_QUIT)
+                    {
+                        quit = true;
+                    }
                 }
+                SDL_RenderClear(sys.get_ren());
+                text->setText("Game Over! \n You got: " + std::to_string(score) + " points");
+                text->getRect().y = 200; 
+                text->getRect().x = 200;
+                text->render();
+                SDL_RenderPresent(sys.get_ren());
             }
+            
         }
+   
+        
     }
-     */
 }
 
