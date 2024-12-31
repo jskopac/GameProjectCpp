@@ -7,8 +7,6 @@
 #include <memory>
 #include <SDL.h>
 
-
-    using namespace std;
     using namespace game_engine;
 
     class Dot : public Sprite{
@@ -22,7 +20,7 @@
 
         private:
             Dot(int x, int y, int w, int h);
-            string imagePath;
+            std::string imagePath;
 
 
     };

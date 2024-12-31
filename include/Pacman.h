@@ -11,7 +11,6 @@
 #include <vector>
 #include <string>
 
-using namespace std;
 using namespace game_engine;
 
 class Pacman : public Sprite{
@@ -25,7 +24,7 @@ public:
 
 private:
     Pacman(int x, int y, int w, int h);
-    string imagePath;
+    std::string imagePath;
     
 };
 #endif

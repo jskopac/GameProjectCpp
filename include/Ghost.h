@@ -5,7 +5,6 @@
 #include <SDL.h>
 #include <memory>
 
-using namespace std;
 using namespace game_engine;
 
 class Ghost : public Sprite{
@@ -17,7 +16,7 @@ public:
 
 private:
     Ghost(int x, int y, int w, int h);
-    string imagePath;
+    std::string imagePath;
     bool directionFlag;
 
 };

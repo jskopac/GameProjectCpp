@@ -7,7 +7,6 @@
 #include <memory>
 #include <string>
 
-using namespace std;
 using namespace game_engine;
 
 class Wall : public Sprite {
@@ -18,7 +17,7 @@ public:
 
 private:
     Wall(int x, int y, int w, int h);
-    string imagePath;
+    std::string imagePath;
 
 };
 
