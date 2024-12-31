@@ -67,6 +67,7 @@ void Pacman ::  onCollision(const std:: shared_ptr<Sprite> other){
     if (dynamic_pointer_cast<Ghost>(other)){
         markForRemoval();
     }
+    //om det är en dot så static points ++
     
 }
 

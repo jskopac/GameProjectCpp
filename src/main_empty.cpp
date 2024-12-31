@@ -14,6 +14,8 @@ using namespace game_engine;
 
 int main(int argc, char ** argv){
 
+    //add menu
+
 
     GameEngine ses;
     //create game board with walls -> dots should be on the non walls x and y.
@@ -29,15 +31,16 @@ int main(int argc, char ** argv){
         }
     }
     //create sprites
+    //move and add ghosts in a better pattern. 
     std::shared_ptr<Pacman> pac = Pacman::createInstance(100,100,32,32);
-    std::shared_ptr<Ghost> ghost1 = Ghost::createInstance(140,0, 32, 32);
-    std::shared_ptr<Ghost> ghost2 = Ghost::createInstance(300,0, 32, 32);
+    std::shared_ptr<Ghost> ghost1 = Ghost::createInstance(140,30, 32, 32);
+    std::shared_ptr<Ghost> ghost2 = Ghost::createInstance(300,30, 32, 32);
     std::shared_ptr<Ghost> ghost3 = Ghost::createInstance(500,300, 32, 32);
-    std::shared_ptr<Ghost> ghost4 = Ghost::createInstance(700,200, 32, 32);
-    std::shared_ptr<Ghost> ghost5 = Ghost::createInstance(800,500, 32, 32);
-    std::shared_ptr<Ghost> ghost6 = Ghost::createInstance(600,600, 32, 32);
+    std::shared_ptr<Ghost> ghost4 = Ghost::createInstance(538,200, 32, 32);
+    std::shared_ptr<Ghost> ghost5 = Ghost::createInstance(538,500, 32, 32);
+    std::shared_ptr<Ghost> ghost6 = Ghost::createInstance(600,538, 32, 32);
     std::shared_ptr<Ghost> ghost7 = Ghost::createInstance(160,500, 32, 32);
-    std::shared_ptr<Ghost> ghost8 = Ghost::createInstance(200,600, 32, 32);
+    std::shared_ptr<Ghost> ghost8 = Ghost::createInstance(200,500, 32, 32);
 
 
     //add sprites to session. 

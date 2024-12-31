@@ -17,10 +17,10 @@ void Ghost :: draw(){
 }
 
 void Ghost :: auto_move(){
-    if (getRect().y == 0){
+    if (getRect().y <= 30){ // hard coded the walls this can be improved
         directionFlag = true;
     }
-    if(getRect().y == 600){
+    if(getRect().y == 538){ //hard coded the walls this can be improved
         directionFlag = false;    
     } 
 

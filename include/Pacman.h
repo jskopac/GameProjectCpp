@@ -15,6 +15,7 @@ using namespace game_engine;
 
 class Pacman : public Sprite{
 public:
+    //points static variable
     static std::shared_ptr<Pacman> createInstance(int x, int y, int w, int h);
     void tick(const SDL_Event& event);
     void draw();
@@ -25,6 +26,7 @@ public:
 private:
     Pacman(int x, int y, int w, int h);
     std::string imagePath;
+
     
 };
 #endif

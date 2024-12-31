@@ -1,4 +1,5 @@
 #include "GameEngine.h"
+#include "TextMenu.h"
 
 
 #define FPS 60
@@ -19,7 +20,7 @@ namespace game_engine
 
     void GameEngine ::run()
     {
-
+        TextMenu* text = TextMenu::createInstance(400,630,400,50);
         const int tickInterval = 1000 / FPS;
         Uint32 nextTick;
         int delay;
@@ -91,6 +92,7 @@ namespace game_engine
                 s->auto_move();
                 s->draw();
             }
+            text->setText("Hej");
             SDL_RenderPresent(sys.get_ren());
 
             delay = nextTick - SDL_GetTicks();
@@ -100,16 +102,16 @@ namespace game_engine
             }
         }
 
-        if (game_over)
-        {
-            gameOver();
-        }
+       // if (game_over)
+       // {
+      //      gameOver();
+       // }
     }
 
 
-    //beutify this.
+    //redo this to instead change the text of point board. 
 
-    void GameEngine::gameOver()
+    /* void GameEngine::gameOver()
     {
         std::string text = "Game Over";
         SDL_Surface *game_over_surf = TTF_RenderText_Solid(sys.get_font(), text.c_str(), {255, 255, 255});
@@ -134,6 +136,6 @@ namespace game_engine
             }
         }
     }
-    
+     */
 }
 

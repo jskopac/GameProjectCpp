@@ -7,7 +7,9 @@ namespace game_engine
 
     Sprite ::Sprite(int x, int y, int w, int h) : rect{x, y, w, h}, remove(false) {}
 
-    Sprite ::~Sprite(){SDL_DestroyTexture(texture);}
+    Sprite ::~Sprite(){
+        SDL_DestroyTexture(texture);
+    }
 
     SDL_Rect &Sprite ::getRect() { return rect; }
 
