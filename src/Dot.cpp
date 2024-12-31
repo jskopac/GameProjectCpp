@@ -23,7 +23,7 @@ bool Dot :: isColliding(const std::shared_ptr<Sprite> other) const{
 }
 
 void Dot :: onCollision(const std:: shared_ptr<Sprite> other){
-        if (dynamic_pointer_cast<Pacman>(other)){
+        if (std::dynamic_pointer_cast<Pacman>(other)){
             markForRemoval();
         }
 }
