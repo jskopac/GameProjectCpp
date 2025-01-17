@@ -13,26 +13,31 @@ namespace game_engine{
     class Sprite{
 
         public: 
+            virtual ~Sprite();
+
             virtual bool isGamePlayer(){return false;}
             virtual bool isTarget(){return false;};
 
+            //movement and update methods
             virtual void tick(const SDL_Event& event){}
-            virtual void draw() = 0;
             virtual void auto_move(){}
 
+            //collision handling
             virtual bool isColliding(const std::shared_ptr<Sprite> other) const;
             virtual void onCollision(const std:: shared_ptr<Sprite> other){}
 
+            //removal handling
             const bool isMarkedForRemoval(); 
             void markForRemoval();
             void unmarkForRemoval();
-            virtual ~Sprite();
 
-            SDL_Texture& getTexture() const;
+            //texture handling
+            virtual void draw() = 0;
             void prepareTexture(const std::string& image);
+            SDL_Texture& getTexture() const;
             SDL_Surface& getSurf() const;
             SDL_Rect& getRect();
-            const SDL_Rect& getRect() const; // is this one really needed? We are getting error messages without it. 
+            const SDL_Rect& getRect() const;
 
             //creates a shared_ptr that the subclasses can use.
             template <typename T, typename...Args>
@@ -52,7 +57,6 @@ namespace game_engine{
             Sprite(const Sprite&) = delete;
             const Sprite& operator = (const Sprite&) = delete;
             bool remove;
-
     };
 
 }   
