@@ -5,19 +5,9 @@
 using namespace std;
 using namespace game_engine;
 
-Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./resources/images/pac_right.png")
-{
-    const std::vector<std::string> imagePaths = {
-        "./resources/images/pac_down.png",
-        "./resources/images/pac_up.png",
-        "./resources/images/pac_left.png",
-        "./resources/images/pac_right.png"
-    };
-    
-    for (const auto& path : imagePaths) {
-        prepareTexture(path);
-    }
-
+Pacman::Pacman(int x, int y, int w, int h) : Sprite(x, y, w, h), imagePath("./resources/images/pac_right.png"){ 
+    //Loads the texture into the sprite
+    prepareTexture(imagePath);
 }
 
 void Pacman::tick(const SDL_Event& event){
@@ -46,13 +36,13 @@ void Pacman::tick(const SDL_Event& event){
     }
 }
 
-void Pacman::draw()
-{
-    SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
+void Pacman::draw(){
+    if (SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect()) != 0) {
+        std::cerr << "Error rendering Pacman: " << SDL_GetError() << std::endl;
+    }
 }
 
-std::shared_ptr<Pacman> Pacman::createInstance(int x, int y, int w, int h)
-{
+std::shared_ptr<Pacman> Pacman::createInstance(int x, int y, int w, int h){
     return std::shared_ptr<Pacman>(new Pacman(x, y, w, h));
     
 }
@@ -70,6 +60,6 @@ void Pacman :: onCollision(const std:: shared_ptr<Sprite> other){
     }   
 }
 
-bool Pacman :: isGamePlayer() {return true;}
+bool Pacman :: isGamePlayer() { return true; }
 
 

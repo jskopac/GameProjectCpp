@@ -12,7 +12,8 @@ std::shared_ptr<Wall> Wall :: createInstance(int x, int y, int w, int h){
     return std::shared_ptr<Wall>(new Wall(x,y,w,h));
 }
 
-
 void Wall :: draw(){
-    SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
+    if (SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect()) != 0) {
+        std::cerr << "Error rendering Wall: " << SDL_GetError() << std::endl;
+    }
 }

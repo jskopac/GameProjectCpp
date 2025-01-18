@@ -13,7 +13,9 @@ std::shared_ptr<Dot> Dot:: createInstance(int x, int y, int w, int h){
 }
 
 void Dot :: draw(){
-    SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect());
+    if (SDL_RenderCopy(sys.get_ren(), &getTexture(), NULL, &getRect()) != 0) {
+        std::cerr << "Error rendering Dot: " << SDL_GetError() << std::endl;
+    }
 }
 
 bool Dot :: isColliding(const std::shared_ptr<Sprite> other) const{
