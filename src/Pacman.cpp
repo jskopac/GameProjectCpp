@@ -29,7 +29,7 @@ void Pacman::tick(const SDL_Event& event){
             }
         }
         if (event.key.keysym.sym == SDLK_DOWN) {
-            if (getRect().y < 800){
+            if (getRect().y < 570){
                 getRect().y += 2; 
             } 
         }
