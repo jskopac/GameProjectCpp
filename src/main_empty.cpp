@@ -57,5 +57,8 @@ int main(int argc, char ** argv){
     //run
     ses.run();
 
+
+    //ta bort texture?
+
     return 0;  
 }
