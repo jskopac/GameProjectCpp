@@ -5,7 +5,6 @@
 #include "Ghost.h"
 #include "GameEngine.h"
 #include <SDL.h>
-#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -14,51 +13,38 @@ using namespace game_engine;
 
 int main(int argc, char ** argv){
 
-    //add menu
-
-
     GameEngine ses;
-    //create game board with walls -> dots should be on the non walls x and y.
-    for (int h = 0; h < 600; h += 30) {
-        for (int w = 0; w < 800; w += 30) {
-            std::shared_ptr<Dot> d = Dot::createInstance(w, h, 10, 10);
+
+    //create game board with walls and dots
+    int wall_height = 30, wall_width = 30;
+
+    for (int y = 0; y < 600; y += 30) {
+        for (int x = 0; x < 800; x += 30) {
+            std::shared_ptr<Dot> d = Dot::createInstance(x, y, 10, 10);
             ses.add(d);
 
-            if (h == 0 || h == 570 || w == 0 || w > 770) { // Top, bottom, left, right
-                std::shared_ptr<Wall> t = Wall::createInstance(w, h, 30, 30);
+            if (y == 0 || y >= (600 - wall_height) || x == 0 || x >= (800 - wall_width)) { // left, right, top, bottom
+                std::shared_ptr<Wall> t = Wall::createInstance(x, y, wall_height, wall_width);
                 ses.add(t);
             }
         }
     }
-    //create sprites
-    //move and add ghosts in a better pattern. 
-    std::shared_ptr<Pacman> pac = Pacman::createInstance(100,100,32,32);
-    std::shared_ptr<Ghost> ghost1 = Ghost::createInstance(140,30, 32, 32);
-    std::shared_ptr<Ghost> ghost2 = Ghost::createInstance(300,30, 32, 32);
-    std::shared_ptr<Ghost> ghost3 = Ghost::createInstance(500,300, 32, 32);
-    std::shared_ptr<Ghost> ghost4 = Ghost::createInstance(538,200, 32, 32);
-    std::shared_ptr<Ghost> ghost5 = Ghost::createInstance(538,500, 32, 32);
-    std::shared_ptr<Ghost> ghost6 = Ghost::createInstance(600,538, 32, 32);
-    std::shared_ptr<Ghost> ghost7 = Ghost::createInstance(160,500, 32, 32);
-    std::shared_ptr<Ghost> ghost8 = Ghost::createInstance(200,500, 32, 32);
 
-
-    //add sprites to session. 
+    //create and add pacman to the sprites vector
+    std::shared_ptr<Pacman> pac = Pacman::createInstance(70,70,32,32);
     ses.add(pac);
-    ses.add(ghost1);
-    ses.add(ghost2);
-    ses.add(ghost3);
-    ses.add(ghost4);
-    ses.add(ghost5);
-    ses.add(ghost6);
-    ses.add(ghost7);
-    ses.add(ghost8);
 
-    //run
+    //create ghosts and add them to the sprites vector
+    for(int x = wall_width; x < (800-wall_width); x += 90){
+        int y = rand() % 540 + wall_height;
+        
+        std::shared_ptr<Ghost> ghost = Ghost::createInstance(x, y, 32, 32);
+        ses.add(ghost);
+    }
+
+
+    //run the game
     ses.run();
-
-
-    //ta bort texture?
 
     return 0;  
 }
